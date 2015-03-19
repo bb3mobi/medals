@@ -1,0 +1,25 @@
+.profile-medals strong { display: none; }
+/* Icon images */
+.approve-icon, 
+.approve-icon a {
+	background: url("./images/icon_post_approve.gif") top left no-repeat;
+}
+
+ul.approve-icons, 
+li.approve-icon { 
+	width: 20px;
+	height: 20px; 
+}
+
+.icon-medal {
+	background-image: url("./images/icon_medal.gif");
+}
+
+.reason {
+	font-size: 1.2em;
+}
+
+fieldset.fields3 dt {
+	width: 45em;
+	border-right-width: 0;
+}

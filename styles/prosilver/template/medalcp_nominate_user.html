@@ -1,0 +1,65 @@
+<!-- INCLUDE overall_header.html -->
+<h2>{L_MEDAL_CP}</h2>
+<form method="post" action="{U_MEDALS_ACTION}" name="post">
+<div class="panel bg3">
+	<div class="inner">
+		<div style="width: 100%;">
+			<div id="cp-menu">
+				<div id="navigation">
+					<ul>
+						<!-- IF S_CAN_NOMINATE_MEDALS -->
+						<li><a href="{U_NOMINATE_PANEL}"><span>{L_NOMINATE}</span></a></li>
+						<!-- ENDIF -->
+						<!-- IF S_CAN_AWARD_MEDALS -->
+						<li><a href="{U_AWARD_PANEL}"><span>{L_AWARD_MEDAL}</span></a></li>
+						<li id="active-subsection"><a><span>{L_NOMINATE_MEDAL}</span></a></li>
+						<li><a href="{U_AWARDED_PANEL}"><span>{L_AWARDED_MEDAL}</span></a></li>
+						<!-- ENDIF -->
+					</ul>
+				</div>
+			</div>
+			<div id="cp-main" class="mcp-main">
+				<h2>{NOMINATE_MEDAL}</h2>
+				<div class="panel">
+					<div class="inner">
+						<table cellspacing="0" class="table1">
+							<thead>
+							<tr>
+								<th class="name" colspan="2">{L_NOMINATE_MEDAL}</th>
+							</tr>
+							</thead>
+							<tbody>
+								<!-- BEGIN nominations -->
+								<tr class="bg1">
+									<td>
+										<ul class="post-buttons">
+											<li>
+												<a title="{L_DELETE}" href="{nominations.U_DELETE}" class="button icon-button delete-icon"><span>{L_DELETE}</span></a>
+											</li>
+											<li>
+												<a title="{L_APPROVE}" href="{nominations.U_APPROVE}" class="button icon-button report-icon"><span>{L_APPROVE}</span></a>
+											</li>
+											<li>
+												<a title="{L_MEDAL_EDIT}" href="{nominations.U_MEDAL_EDIT}" class="button icon-button edit-icon"><span>{L_MEDAL_EDIT}</span></a>
+											</li>
+										</ul>
+									</td>
+									<td><div class="reason"><span>{nominations.REASON}</span></div></td>
+								</tr>
+								<!-- END nominations -->
+								<!-- IF S_ROW_COUNT eq 0 -->
+								<tr class="bg1">
+									<td colspan="2"><span><br />{L_NO_USER_NOMINATIONS}<br /><br /></span></td>
+								</tr>
+								<!-- ENDIF -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</form>
+<!-- INCLUDE overall_footer.html -->

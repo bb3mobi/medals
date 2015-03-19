@@ -1,0 +1,9 @@
+<!-- BEGIN medal -->
+<!-- IF postrow.medal.S_HAS_MEDALS or postrow.medal.S_HAS_NOMINATIONS --><br /><b>{L_MEDALS}{L_COLON}</b> {postrow.medal.MEDALS_COUNT}{postrow.medal.MEDALS_NOMINATED}<!-- ENDIF -->
+	<!-- BEGIN medal_row -->
+	<br />
+		<!-- BEGIN medal_col -->
+			<img src="{postrow.medal.medal_row.medal_col.MEDAL_IMAGE}" border="0" alt="{postrow.medal.medal_row.medal_col.MEDAL_NAME} {postrow.medal.medal_row.medal_col.MEDAL_COUNT}" title="{postrow.medal.medal_row.medal_col.MEDAL_NAME} {postrow.medal.medal_row.medal_col.MEDAL_COUNT}" {postrow.medal.medal_row.medal_col.MEDAL_WIDTH} {postrow.medal.medal_row.medal_col.MEDAL_HEIGHT} />
+		<!-- END medal_col -->
+	<!-- END medal_row -->
+<!-- END medal -->

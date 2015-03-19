@@ -1,0 +1,36 @@
+{
+    "name": "bb3mobi/medals",
+    "type": "phpbb-extension",
+    "description": "A system for awarding medals/ribbons to users.",
+    "homepage": "http://bb3.mobi",
+    "keywords": ["medal", "reating", "system", "like", "award", "ribbons"],
+    "version": "1.0.0",
+    "time": "2015-02-07",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Nathan DuPra",
+            "homepage": "http://test.dupra.net",
+            "role": "Developer  (From: 2007-05-29 to: 2010-01-22)"
+        },
+        {
+            "name": "Guy Gardner",
+            "homepage": "http://www.oddfish.co",
+            "role": "Developer Mods"
+        },
+        {
+            "name": "Anvar",
+            "homepage": "http://apwa.ru",
+            "role": "Developer Extension"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "Medals System",
+        "soft-require": {
+        "phpbb/phpbb": "3.1.*@dev"
+        }
+    }
+}

@@ -1,0 +1,57 @@
+<!-- INCLUDE ucp_header.html -->
+<h2>{L_MEDAL_CP}</h2>
+<form method="post" action="{U_MEDALS_ACTION}" name="post">
+<div class="panel">
+	<div class="inner">
+		<div style="width: 100%;">
+			<div id="cp-main" class="mcp-main">
+				<h2>{NOMINATE_MEDAL}</h2>
+				<div class="panel">
+					<div class="inner">
+						<table cellspacing="0" class="table1">
+							<thead>
+							<tr>
+								<th class="name" colspan="2">{L_NOMINATE_MEDAL}</th>
+							</tr>
+							</thead>
+							<tbody>
+								<!-- BEGIN nominations -->
+								<tr class="bg1">
+									<td>
+										<ul class="post-buttons">
+											<li>
+												<a title="{L_DELETE}" href="{nominations.U_DELETE}" class="button icon-button delete-icon"><span>{L_DELETE}</span></a>
+											</li>
+											<li>
+												<a title="{L_APPROVE}" href="{nominations.U_APPROVE}" class="button icon-button report-icon"><span>{L_APPROVE}</span></a>
+											</li>
+											<li>
+												<a title="{L_MEDAL_EDIT}" href="{nominations.U_MEDAL_EDIT}" class="button icon-button edit-icon"><span>{L_MEDAL_EDIT}</span></a>
+											</li>
+										</ul>
+									</td>
+									<td><div class="reason"><span>{nominations.REASON}</span></div></td>
+								</tr>
+								<!-- END nominations -->
+								<!-- IF S_ROW_COUNT eq 0 -->
+								<tr class="bg1">
+									<td colspan="2"><p>{L_NO_USER_NOMINATIONS}</p></td>
+								</tr>
+								<!-- ENDIF -->
+								<!-- IF U_DELETE_ALL -->
+								<tr class="bg1">
+									<td><div class="name"><span>{L_DELETE_ALL}</span></div></td>
+									<td><a href="{U_DELETE_ALL}" class="button icon-button delete-icon"><span>{L_DELETE_ALL}</span></a></td>
+								</tr>
+								<!-- ENDIF -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</form>
+<!-- INCLUDE ucp_footer.html -->

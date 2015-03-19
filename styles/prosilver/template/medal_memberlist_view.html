@@ -1,0 +1,59 @@
+<!-- BEGIN switch_display_medal -->
+<!-- INCLUDEJS toggle_display.js -->
+<div class="panel">
+	<div class="inner">
+		<h3>{L_MEDAL_INFORMATION}</h3>
+		<h3>{L_MEDALS_VIEW}:&nbsp;<b>{USER_MEDAL_COUNT}</b></h3>
+		<table width="100%" cellspacing="1" cellpadding="3" border="0" align="center">
+			<tr>
+				<td width="100" valign="center">
+					<!-- BEGIN medal -->
+					{switch_display_medal.medal.MEDAL_BUTTON}
+					<!-- END medal -->
+				</td>
+				<td valign="top">
+					<!-- BEGIN details -->
+					&nbsp;{switch_display_medal.details.MEDAL_IMAGE_SMALL}&nbsp;
+					<!-- END details -->
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div style="width: 100%; overflow: hidden; display: none;" id="toggle_medal">
+<div class="panel">
+	<div class="inner">
+		<a name="medal"></a>
+		<table width="100%" cellspacing="1" cellpadding="3" border="0" align="center">
+		  <tr>
+			<th align="center" nowrap="nowrap"><h3>{L_MEDAL}</h3></th>
+			<th align="center" nowrap="nowrap"><h3>{L_MEDAL_DETAIL}</h3></th>
+		  </tr>
+		<!-- BEGIN details -->
+		  <tr>
+			<td nowrap="nowrap" width="20%">
+				<table width="100%" cellspacing="1" cellpadding="3" border="0">
+		<!-- IF switch_display_medal.details.ISMEDAL_CAT  -->
+				<tr><td align="center"><h4>{switch_display_medal.details.MEDAL_CAT}</h4></td></tr>
+		<!-- ENDIF  -->
+				<tr><td align="center">{switch_display_medal.details.MEDAL_NAME}</td></tr>
+				<tr><td align="center">{switch_display_medal.details.MEDAL_IMAGE}</td></tr>
+				<tr><td align="center">{switch_display_medal.details.MEDAL_COUNT}</td></tr></table></td>
+			<td valign="top">
+				<table width="100%" cellspacing="1" cellpadding="3" border="0">
+				<tr><td><h3>{L_MEDAL_DESCRIPTION}: <b>{switch_display_medal.details.MEDAL_DESCRIPTION}</b></h3></td></tr>
+				<tr><td class="reason">
+					<table width="100%" cellspacing="1" cellpadding="3" border="0">
+					<tr><td>{switch_display_medal.details.MEDAL_ISSUE}</td></tr>
+					</table>
+				</td></tr>
+			</table></td>
+		  </tr>
+		<!-- END details -->
+		</table>
+	</div>
+</div>
+<div class="copyright">{L_EXT_AUTHOR_COPY}</div>
+</div>
+<!-- END switch_display_medal -->
