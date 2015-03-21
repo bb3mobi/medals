@@ -96,7 +96,7 @@ class medals_module
 					break ;
 				}
 				$this->tpl_name = 'acp_medals_config';
-                $this->page_title = $user->lang['ACP_MEDALS_INDEX'];
+				$this->page_title = $user->lang['ACP_MEDALS_INDEX'];
 
 				$template->assign_vars(array(
 					'L_TITLE'			=> $user->lang[$display_vars['title']],
@@ -145,7 +145,7 @@ class medals_module
 						'TITLE_EXPLAIN'	=> $l_explain,
 						'CONTENT'		=> build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars),
 					));
-				
+
 					unset($display_vars['vars'][$config_key]);
 				}
 				break;
@@ -158,22 +158,22 @@ class medals_module
 				$medals = array();
 				while ($row = $db->sql_fetchrow($result))
 				{
-					$medals[$row['id']] = array( 
-						'name' 		=> $row['name'], 
-						'description' => $row['description'], 
-						'image'	 	=> $row['image'], 
-						'device' 	=> $row['device'], 
+					$medals[$row['id']] = array(
+						'name' 		=> $row['name'],
+						'description' => $row['description'],
+						'image'	 	=> $row['image'],
+						'device' 	=> $row['device'],
 						'dynamic'	=> $row['dynamic'],
 						'number'	=> $row['number'],
 						'points'	=> $row['points'],
-						'parent' 	=> $row['parent'], 
+						'parent' 	=> $row['parent'],
 						'id'		=> $row['id'],
 						'nominated'	=> $row['nominated'],
 						'order_id'	=> $row['order_id'],
 					);
 				}
 				$db->sql_freeresult($result);
-				
+
 				$sql = 'SELECT *
 					FROM ' . MEDALS_CATS_TABLE . '
 					ORDER BY order_id ASC';
@@ -181,8 +181,8 @@ class medals_module
 				$cats = array();
 				while ($row = $db->sql_fetchrow($result))
 				{
-					$cats[$row['id']] = array( 
-						'name' 		=> $row['name'], 
+					$cats[$row['id']] = array(
+						'name' 		=> $row['name'],
 						'id'		=> $row['id'],
 						'order_id'	=> $row['order_id'],
 					);
@@ -245,28 +245,28 @@ class medals_module
 				$medals = array();
 				while ($row = $db->sql_fetchrow($result))
 				{
-					$medals[$row['id']] = array( 
-						'name' 		=> $row['name'], 
-						'image'	 	=> $row['image'], 
-						'device'	=> $row['device'], 
+					$medals[$row['id']] = array(
+						'name' 		=> $row['name'],
+						'image'	 	=> $row['image'],
+						'device'	=> $row['device'],
 						'dynamic'	=> $row['dynamic'],
 						'number'	=> $row['number'],
 						'points'	=> $row['points'],
-						'parent' 	=> $row['parent'], 
+						'parent' 	=> $row['parent'],
 						'id'		=> $row['id'],
 						'nominated'	=> $row['nominated'],
 						'order_id'	=> $row['order_id'],
 					);
 				}
 				$db->sql_freeresult($result);
-				
+
 			case 'catview':
-			
+
 				if ($cat_id < 0)
 				{
 					trigger_error('NO_CAT_ID');
 				}
-				
+
 				$this->tpl_name = 'acp_medals_cat';
 				$this->page_title = $user->lang['ACP_MEDALS_INDEX'];
 				foreach($medals as $key => $value)
@@ -287,11 +287,11 @@ class medals_module
 						'S_IS_MEDAL'		=> true,
 					));
 				}
-                $template->assign_vars(array(
+				$template->assign_vars(array(
 					'CAT_TITLE' => $cats[$cat_id]['name'],
 				));
-                break;
-			
+			break;
+
 			case 'deletemedal':
 				if (!$request->is_set_post('confirm'))
 				{
@@ -310,10 +310,10 @@ class medals_module
 				$sql = 'DELETE FROM ' . MEDALS_AWARDED_TABLE . ' WHERE medal_id = ' . $medal_id;
 				$db->sql_query($sql);
 				trigger_error(sprintf($user->lang['ACP_MEDAL_DELETE_GOOD'], append_sid('index.php?i=' . $id . '&mode=management&submode=catview&catid=' . $cat_id)));
-				break;
-			
+			break;
+
 			case 'editmedal':
-				
+
 				if ($medal_id < 0)
 				{
 					trigger_error('NO_MEDAL_ID');
@@ -322,10 +322,10 @@ class medals_module
 				{
 					trigger_error('NO_CAT_ID');
 				}
-				
-                $this->tpl_name = 'acp_medals_new';
-                $this->page_title = $user->lang['ACP_MEDALS_INDEX'];
-				
+
+				$this->tpl_name = 'acp_medals_new';
+				$this->page_title = $user->lang['ACP_MEDALS_INDEX'];
+
 				$dir = $phpbb_root_path . 'images/medals/';
 				$options = '<option value=""></option>';
 				if ($dh = opendir($dir))
@@ -346,7 +346,7 @@ class medals_module
 					}
 					closedir($dh);
 				}
-				
+
 				$options2 = '';
 				foreach($cats as $key => $value)
 				{
@@ -360,7 +360,7 @@ class medals_module
 					}
 				}
 
-                $template->assign_vars(array(
+				$template->assign_vars(array(
 					'MEDAL_TITLE'			=> $user->lang['ACP_MEDAL_TITLE_EDIT'],
 					'MEDAL_TEXT'			=> $user->lang['ACP_MEDAL_TEXT_EDIT'],
 					'NAME_VALUE'			=> $medals[$medal_id]['name'],
@@ -379,10 +379,10 @@ class medals_module
 					'MEDAL_SUBMIT'			=> append_sid('index.php?i=' . $id . '&mode=management&submode=editmedalsql&medalid=' . $medal_id . '&catid=' . $cat_id),
 					'PHPBB_ROOT_PATH'		=> $phpbb_root_path,
 				));
-				break;
-			
+			break;
+
 			case 'editmedalsql':
-				
+
 				$this_id = $medals[$medal_id]['order_id'];
 				if ($medals[$medal_id]['parent'] != $request->variable('parent', ''))
 				{
@@ -415,12 +415,12 @@ class medals_module
 						$newcat = $key;
 						break;
 					}
-				}	
+				}
 				trigger_error(sprintf($user->lang['ACP_MEDAL_EDIT_GOOD'], append_sid('index.php?i=' . $id . '&mode=management&submode=catview&catid=' . $newcat)));
-				break;
-				
+			break;
+
 			case 'addcat':
-			
+
 				$cat_name = utf8_normalize_nfc($request->variable('medal_catname', '', true));
 
 				if (empty($cat_name))
@@ -496,7 +496,7 @@ class medals_module
 					}
 					closedir($dh);
 				}
-				
+
 				$options2 = '';
 				foreach($cats as $key => $value)
 				{
@@ -528,7 +528,7 @@ class medals_module
 			break;
 
 			case 'movecat':
-			
+
 				if ($move_type)
 				{
 					$swap_diff = 1;
@@ -553,21 +553,21 @@ class medals_module
 				$cats = array();
 				while ($row = $db->sql_fetchrow($result))
 				{
-					$cats[$row['id']] = array( 
-						'name' 		=> $row['name'], 
+					$cats[$row['id']] = array(
+						'name' 		=> $row['name'],
 						'id'		=> $row['id'],
 						'order_id'	=> $row['order_id'],
 					);
 				}
 				$db->sql_freeresult($result);
-				break;
-			
-			case 'editcat':
-				
-                $this->tpl_name = 'acp_medals_cats_edit';
-                $this->page_title = $user->lang['ACP_MEDALS_INDEX'];
+			break;
 
-                $template->assign_vars(array(
+			case 'editcat':
+
+				$this->tpl_name = 'acp_medals_cats_edit';
+				$this->page_title = $user->lang['ACP_MEDALS_INDEX'];
+
+				$template->assign_vars(array(
 					'MEDAL_TITLE'			=> $user->lang['ACP_MEDAL_TITLE_CAT'],
 					'MEDAL_TEXT'			=> $user->lang['ACP_MEDAL_TEXT_CAT'],
 					'MEDAL_LEGEND'			=> $user->lang['ACP_MEDAL_LEGEND_CAT'],
@@ -576,8 +576,8 @@ class medals_module
 					'MEDAL_ACTION'			=> 'changecat',
 					'MEDAL_SUBMIT'			=> append_sid('index.php?i=' . $id . '&mode=management&submode=editcatsql&catid=' . $cat_id),
 				));
-				break;
-			
+			break;
+
 			case 'editcatsql':
 				$sql = 'UPDATE ' . MEDALS_CATS_TABLE . ' 
 						SET ' . $db->sql_build_array('UPDATE', array(
@@ -586,8 +586,8 @@ class medals_module
 						WHERE id = ' . $cats[$cat_id]['id'];
 				$db->sql_query($sql);
 				trigger_error(sprintf($user->lang['ACP_CAT_EDIT_GOOD'], append_sid('index.php?i=' . $id . '&mode=management')));
-				break;
-			
+			break;
+
 			case 'deletecat':
 				if (!$request->is_set_post('deleteall') && !$request->is_set_post('moveall'))
 				{

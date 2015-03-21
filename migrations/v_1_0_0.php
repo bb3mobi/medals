@@ -38,7 +38,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 			'add_tables'	=> array(
 				$this->table_prefix . 'medals'	=> array(
 					'COLUMNS'		=> array(
-						'id'			=> array('UINT:11', NULL, 'auto_increment'),
+						'id'			=> array('UINT:11', null, 'auto_increment'),
 						'name'			=> array('VCHAR:30', ''),
 						'image'			=> array('VCHAR:100', ''),
 						'dynamic'		=> array('BOOL', 0),
@@ -57,7 +57,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 				),
 				$this->table_prefix . 'medals_awarded'	=> array(
 					'COLUMNS'		=> array(
-						'id'				=> array('UINT:10', NULL, 'auto_increment'),
+						'id'				=> array('UINT:10', null, 'auto_increment'),
 						'medal_id'			=> array('UINT', 0),
 						'user_id'			=> array('UINT', 0),
 						'awarder_id'		=> array('UINT', 0),
@@ -77,7 +77,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 				),
 				$this->table_prefix . 'medals_cats'	=> array(
 					'COLUMNS'		=> array(
-						'id'			=> array('UINT:5', NULL, 'auto_increment'),
+						'id'			=> array('UINT:5', null, 'auto_increment'),
 						'name'			=> array('VCHAR:30', ''),
 						'order_id'		=> array('UINT:5', 0),
 					),

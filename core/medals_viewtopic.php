@@ -82,14 +82,14 @@ class medals_viewtopic
 			if ($col == $split_row)
 			{
 				if ($row == $medal_rows - 1)
-				{ 
+				{
 					break;
 				}
 				$col = 0;
 				$row++;
 			}
-			else 
-			{ 
+			else
+			{
 				$col++;
 			}
 		}

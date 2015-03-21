@@ -16,11 +16,11 @@
 
 namespace bb3mobi\medals\controller;
 
-use Symfony\Component\HttpFoundation\Response;
-
+/**
+* Main controller
+*/
 class medals
 {
-
 	/** @var \phpbb\user */
 	protected $user;
 
@@ -120,12 +120,12 @@ class medals
 		$result = $this->db->sql_query($sql);
 		while ($row = $this->db->sql_fetchrow($result))
 		{
-			$medals[$row['id']] = array( 
-				'name' 			=> $row['name'], 
+			$medals[$row['id']] = array(
+				'name' 			=> $row['name'],
 				'image'	 		=> $medals_path . '/' . $row['image'],
 				'device' 		=> $medals_path . '/devices/' . $row['device'],
 				'dynamic'		=> $row['dynamic'],
-				'parent' 		=> $row['parent'], 
+				'parent' 		=> $row['parent'],
 				'id'			=> $row['id'],
 				'number'		=> $row['number'],
 				'nominated'		=> $row['nominated'],
@@ -143,8 +143,8 @@ class medals
 		$cats = array();
 		while ($row = $this->db->sql_fetchrow($result))
 		{
-			$cats[$row['id']] = array( 
-				'name' 		=> $row['name'], 
+			$cats[$row['id']] = array(
+				'name' 		=> $row['name'],
 				'id'		=> $row['id'],
 				'order_id'	=> $row['order_id'],
 			);
@@ -430,7 +430,7 @@ class medals
 					$medals_desc_arr .= 'medals_desc[' . $value['id'] . '] = "' . $value['description'] . '";';
 				}
 				$medals_arr .= "\n" . $medals_desc_arr . "\n" ;
-				
+
 				if ($no_medals)
 				{
 					$medals_options = '<option value="">' . $this->user->lang['NO_MEDALS'] . '</option>';
@@ -468,7 +468,7 @@ class medals
 				);
 				page_footer();
 			break;
-				
+
 			case 'awarded':
 				$sql = "SELECT user_id, username, user_colour
 					FROM " . USERS_TABLE . "
@@ -600,7 +600,7 @@ class medals
 						$result = $this->db->sql_query($sql);
 						$row = $this->db->sql_fetchrow($result);
 						$this->db->sql_freeresult($result);
-						
+
 						$username[] = $row['user_id'] ;
 					}
 				}
@@ -624,7 +624,7 @@ class medals
 					{
 						trigger_error(sprintf($this->user->lang['CANNOT_AWARD_MULTIPLE'], append_sid('memberlist.php?mode=viewprofile&u=' . $user_id)));
 					}
-					
+
 					// Call award_medal function
 					if (isset($med_id))
 					{
@@ -685,7 +685,7 @@ class medals
 					trigger_error(sprintf($this->user->lang['MEDAL_REMOVE_NO']));
 				}
 			break;
-				
+
 			case 'approve':
 				if ($this->user->data['user_type'] != USER_FOUNDER && !$this->auth->acl_get('u_award_medals'))
 				{
@@ -833,11 +833,11 @@ class medals
 				$i = 1;
 				while ($row = $this->db->sql_fetchrow($result))
 				{
-					$awarder_name = get_username_string('full', $row['awarder_id'], $row['awarder_un'], $row['awarder_color'], $row['awarder_un']) ;
-					$users_medals[$i] = array( 
-						'id'	 		=> $row['id'], 
-						'username'		=> $row['username'], 
-						'user_colour'	=> $row['user_colour'], 
+					$awarder_name = get_username_string('full', $row['awarder_id'], $row['awarder_un'], $row['awarder_color'], $row['awarder_un']);
+					$users_medals[$i] = array(
+						'id'	 		=> $row['id'],
+						'username'		=> $row['username'],
+						'user_colour'	=> $row['user_colour'],
 						'user_id'		=> $row['user_id'],
 						'reason'		=> $this->user->lang['MEDAL_NOM_BY'] . ' : ' . $awarder_name . '<br />' . $row['nominated_reason'],
 						'bbuid'			=> $row['bbuid'],
@@ -857,7 +857,7 @@ class medals
 						'U_MCP'			=> "?m=approve&med={$value['id']}&mid={$med_id}&u={$value['user_id']}",
 						'U_USER_DELETE'	=> "?m=delete&med={$value['id']}&u={$value['user_id']}",
 					));
-					
+
 					$nominated_users[$value['user_id']]['user'] = $awarded;
 					$nominated_users[$value['user_id']]['count'] = isset($nominated_users[$value['user_id']]['count']) ? $nominated_users[$value['user_id']]['count'] + '1' : 1;
 				}
@@ -908,8 +908,8 @@ class medals
 					{
 						trigger_error('NO_MEDAL_ID');
 					}
-					
-					$message	= utf8_normalize_nfc($this->request->variable('message', '', true));
+
+					$message = utf8_normalize_nfc($this->request->variable('message', '', true));
 					if (!strlen($message))
 					{
 						$return_to = $this->helper->route('bb3mobi_medals_controller', array('mode' => $mode, 'med' => $med_id));
@@ -921,7 +921,7 @@ class medals
 					{
 						$username[] = $this->db->sql_escape(utf8_clean_string($value));
 					}
-					
+
 					$award_user = $not_award_user = $awarded_user = $no_such_user = array() ;
 
 					// Change usernames to ids
@@ -982,9 +982,9 @@ class medals
 				$i = 1;
 				while ($row = $this->db->sql_fetchrow($result))
 				{
-					$users_medals[$i] = array( 
-						'username' 		=> $row['username'], 
-						'user_colour' 	=> $row['user_colour'], 
+					$users_medals[$i] = array(
+						'username' 		=> $row['username'],
+						'user_colour' 	=> $row['user_colour'],
 						'user_id'		=> $row['user_id'],
 					);
 					$i++;
@@ -1005,7 +1005,7 @@ class medals
 						'U_MEDALS_ACTION'	=> "?m=$mode&med=$med_id",
 						'U_FIND_USERNAME'	=> append_sid($phpbb_root_path . 'memberlist.' . $phpEx, 'mode=searchuser&amp;form=post&amp;field=add'),
 				));
-				
+
 				page_header($this->user->lang['MEDALS_VIEW']);
 				$this->template->set_filenames(array(
 					'body' => '@bb3mobi_medals/medals.html')
@@ -1025,10 +1025,10 @@ class medals
 				$i = 1;
 				while ($row = $this->db->sql_fetchrow($result))
 				{
-					$users_medals[$i] = array( 
-						'username' 		=> $row['username'], 
-						'user_colour' 	=> $row['user_colour'], 
-						'medal_id' 		=> $row['medal_id'], 
+					$users_medals[$i] = array(
+						'username' 		=> $row['username'],
+						'user_colour' 	=> $row['user_colour'],
+						'medal_id' 		=> $row['medal_id'],
 						'user_id'		=> $row['user_id'],
 						'nominated'		=> $row['nominated'],
 					);

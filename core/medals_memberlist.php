@@ -268,7 +268,7 @@ class medals_memberlist
 							$image = '<img src="' . $data['image'] . '" alt="' . $medal_name . '" title="' . $medal_name . '" />';
 							$small_image = $break . '<img src="' . $data['image'] . '" alt="' . $medal_name . '" title="' . $medal_name . '"' . $medal_width . $medal_height . ' />';
 						}
-						
+
 						$this->template->assign_block_vars('switch_display_medal.details', array(
 							'ISMEDAL_CAT' 		=> $newcat,
 							'MEDAL_CAT' 		=> $data['cat_name'],
