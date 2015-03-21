@@ -192,16 +192,16 @@ class medals
 					$my_medals[$row['medal_id']] = $row;
 				}
 				$this->db->sql_freeresult($result);
-				
+
 				$sql = "SELECT user_id, username, user_colour
 					FROM " . USERS_TABLE . "
 					WHERE user_id = {$user_id}";
 				$result = $this->db->sql_query($sql);
 				$row = $this->db->sql_fetchrow($result);
 				$this->db->sql_freeresult($result);
-				
+
 				$username = get_username_string('full', $row['user_id'], $row['username'], $row['user_colour'], $row['username']);
-				
+
 				$medals_options = '<option value=""></option>';
 				$temp_string = '';
 				$i = 0;
@@ -264,7 +264,7 @@ class medals
 					'S_BBCODE_FLASH'	=> $flash_status,
 					'S_BBCODE_QUOTE'	=> $quote_status,
 				));
-				
+
 				page_header($this->user->lang['NOMINATE']);
 				$this->template->set_filenames(array(
 					'body' => '@bb3mobi_medals/medalcp_nominate.html')
@@ -307,7 +307,7 @@ class medals
 				{
 					trigger_error(sprintf($this->user->lang['CANNOT_AWARD_MULTIPLE'], append_sid('memberlist.php?mode=viewprofile&u=' . $user_id)));
 				}
-				
+
 				generate_text_for_storage($message, $this->uid, $this->bitfield, $this->m_flags, $this->allow_bbcode, $this->allow_urls, $this->allow_smilies);
 
 				$sql_ary = array(
@@ -420,7 +420,7 @@ class medals
 						$no_medals = false ;
 					}
 				}
-			
+
 				$medals_arr = 'var medals = new Array();';
 				$medals_desc_arr = 'var medals_desc = new Array();' ;
 				foreach ($medals as $key => $value)
@@ -460,7 +460,7 @@ class medals
 					'S_BBCODE_FLASH'		=> $flash_status,
 					'S_BBCODE_QUOTE'		=> $quote_status,
 				));
-				
+
 				page_header($this->user->lang['AWARD_MEDAL']);
 				$this->template->set_filenames(array(
 					'body' => '@bb3mobi_medals/medalcp_award_user.html')
@@ -475,9 +475,9 @@ class medals
 				$result = $this->db->sql_query($sql);
 				$row = $this->db->sql_fetchrow($result);
 				$this->db->sql_freeresult($result);
-				
+
 				$username = get_username_string('full', $row['user_id'], $row['username'], $row['user_colour'], $row['username']);
-					
+
 				$sql3 = "SELECT *
 						FROM " . $this->tb_medals_awarded . "
 						WHERE user_id = {$user_id}
@@ -505,7 +505,7 @@ class medals
 					$s_medals = true;
 				}
 				$this->db->sql_freeresult($result3);
-				
+
 				$my_medals_arr = array();
 				ksort($users_medals);
 				foreach ($users_medals as $key => $value)
@@ -544,12 +544,12 @@ class medals
 							'med' => $value[0]['ID'])
 						);
 						$this->template->assign_block_vars('medals', array(
-							'MEDAL_NAME'		=> $value[0]['MEDAL_NAME'],
-							'MEDAL_IMAGE'		=> $value[0]['MEDAL_IMAGE'],
-							'MEDAL_REASON'		=> $value[0]['MEDAL_REASON'],
-							'U_DELETE'			=> $u_delete,
+							'MEDAL_NAME'	=> $value[0]['MEDAL_NAME'],
+							'MEDAL_IMAGE'	=> $value[0]['MEDAL_IMAGE'],
+							'MEDAL_REASON'	=> $value[0]['MEDAL_REASON'],
+							'U_DELETE'		=> $u_delete,
 
-							'IS_CAT'			=> false,
+							'IS_CAT'		=> false,
 						));
 					}
 				}
@@ -607,7 +607,7 @@ class medals
 				{
 					$username[] = $user_id ;
 				}
-				
+
 				foreach ($username as $user_id)
 				{
 					$sql = "SELECT count(*) as count
@@ -627,11 +627,11 @@ class medals
 					// Call award_medal function
 					if (isset($med_id))
 					{
-						$this->award_medal($medals, $medal_id, $user_id, $message, time(), $medals[$medal_id]['points'], $med_id) ;
+						$this->award_medal($medals, $medal_id, $user_id, $message, time(), $medals[$medal_id]['points'], $med_id);
 					}
 					else
 					{
-						$this->award_medal($medals, $medal_id, $user_id, $message, time(), $medals[$medal_id]['points']) ;
+						$this->award_medal($medals, $medal_id, $user_id, $message, time(), $medals[$medal_id]['points']);
 					}
 				}
 				$redirect = append_sid('memberlist.php?mode=viewprofile&u=' . $user_id);
@@ -739,7 +739,7 @@ class medals
 					$row = $this->db->sql_fetchrow($result);
 					$this->db->sql_freeresult($result);
 				$username = get_username_string('full', $row['user_id'], $row['username'], $row['user_colour'], $row['username']);
-				
+
 				$sql = "SELECT ma.*, m.name
 						FROM " . $this->tb_medals_awarded . " as ma, " . $this->tb_medal . " as m
 						WHERE ma.user_id = {$user_id}
@@ -756,7 +756,6 @@ class medals
 					$message = generate_text_for_display($row['nominated_reason'], $row['bbuid'], $row['bitfield'], $this->m_flags);
 					$message = $nom_message . $message ;
 					$message = censor_text($message);
-				
 					$message = str_replace("\n", '<br />', $message);
 
 					$this->uid = $row['bbuid'];
@@ -786,19 +785,18 @@ class medals
 					$i++;
 				}
 				$this->db->sql_freeresult($result);
-				
+
 				$this->template->assign_vars(array(
 					'U_MEDALS_ACTION'		=> $this->helper->route('bb3mobi_medals_controller', array('m' => 'submit', 'u' => $user_id)),
 					'NOMINATE_MEDAL'		=> sprintf($this->user->lang['NOMINATE_USER_LOG'] , $username),
 					'S_ROW_COUNT'			=> $i,
 				));
-				
+
 				page_header($this->user->lang['NOMINATE_MEDAL']);
 				$this->template->set_filenames(array(
 					'body' => '@bb3mobi_medals/medalcp_nominate_user.html')
 				);
 				page_footer();
-				
 			break;
 
 			case 'mnd':
@@ -837,8 +835,8 @@ class medals
 					$awarder_name = get_username_string('full', $row['awarder_id'], $row['awarder_un'], $row['awarder_color'], $row['awarder_un']) ;
 					$users_medals[$i] = array( 
 						'id'	 		=> $row['id'], 
-						'username' 		=> $row['username'], 
-						'user_colour' 	=> $row['user_colour'], 
+						'username'		=> $row['username'], 
+						'user_colour'	=> $row['user_colour'], 
 						'user_id'		=> $row['user_id'],
 						'reason'		=> $this->user->lang['MEDAL_NOM_BY'] . ' : ' . $awarder_name . '<br />' . $row['nominated_reason'],
 						'bbuid'			=> $row['bbuid'],
@@ -853,10 +851,10 @@ class medals
 					$awarded = get_username_string('full', $value['user_id'], $value['username'], $value['user_colour']) ;
 
 					$this->template->assign_block_vars('nominatedrow', array(
-							'NOMINATED'			=> $awarded,
-							'REASON'			=> generate_text_for_display($value['reason'], $value['bbuid'], $value['bitfield'], $this->m_flags),
-							'U_MCP'				=> "?m=approve&med={$value['id']}&mid={$med_id}&u={$value['user_id']}",
-							'U_USER_DELETE'		=> "?m=delete&med={$value['id']}&u={$value['user_id']}",
+						'NOMINATED'		=> $awarded,
+						'REASON'		=> generate_text_for_display($value['reason'], $value['bbuid'], $value['bitfield'], $this->m_flags),
+						'U_MCP'			=> "?m=approve&med={$value['id']}&mid={$med_id}&u={$value['user_id']}",
+						'U_USER_DELETE'	=> "?m=delete&med={$value['id']}&u={$value['user_id']}",
 					));
 					
 					$nominated_users[$value['user_id']]['user'] = $awarded;
@@ -1061,10 +1059,10 @@ class medals
 							{
 								if ($value3['medal_id'] == $value2['id'] && $value3['nominated'] == 0)
 								{
-										$awarded = get_username_string('full', $value3['user_id'], $value3['username'], $value3['user_colour']) ;
-										$awarded_users = $awarded_users ? $awarded_users . ', ' . $awarded : $awarded ;
+									$awarded = get_username_string('full', $value3['user_id'], $value3['username'], $value3['user_colour']) ;
+									$awarded_users = $awarded_users ? $awarded_users . ', ' . $awarded : $awarded ;
 								}
-								elseif ($value3['medal_id'] == $value2['id'] && $value3['nominated'] == 1)
+								else if ($value3['medal_id'] == $value2['id'] && $value3['nominated'] == 1)
 								{
 									$nominations++ ;
 								}
@@ -1097,6 +1095,7 @@ class medals
 					'body' => '@bb3mobi_medals/medals.html')
 				);
 				page_footer();
+
 			break;
 		}
 	}
@@ -1120,14 +1119,14 @@ class medals
 		if ($update > 0)
 		{
 			$sql_ary = array(
-				'medal_id'		=> $medal_id,
-				'user_id'		=> $user_id,
-				'nominated'		=> 0,
+				'medal_id'			=> $medal_id,
+				'user_id'			=> $user_id,
+				'nominated'			=> 0,
 				'nominated_reason'	=> $message,
-				'points'		=> $points,
-				'time'			=> $time,
-				'bitfield'		=> $this->bitfield,
-				'bbuid'			=> $this->uid,
+				'points'			=> $points,
+				'time'				=> $time,
+				'bitfield'			=> $this->bitfield,
+				'bbuid'				=> $this->uid,
 			);
 
 			$sql = "UPDATE " . $this->tb_medals_awarded . " SET " . $this->db->sql_build_array('UPDATE', $sql_ary) . "
@@ -1143,27 +1142,27 @@ class medals
 			$result = $this->db->sql_query($sql);
 			$row = $this->db->sql_fetchrow($result);
 			$this->db->sql_freeresult($result);
-			
+
 			$color = $row['awarder_color'] <> "" ? '[color=#' . $row['awarder_color'] . ']' . $row['awarder_un'] . '[/color]': $row['awarder_un'] ;
 		}
 		else
 		{
 			$sql_ary = array(
-				'medal_id'		=> $medal_id,
-				'user_id'		=> $user_id,
-				'awarder_id'	=> $this->user->data['user_id'],
-				'awarder_un'	=> $this->user->data['username'],
-				'awarder_color'	=> $this->user->data['user_colour'],
-				'nominated'		=> 0,
+				'medal_id'			=> $medal_id,
+				'user_id'			=> $user_id,
+				'awarder_id'		=> $this->user->data['user_id'],
+				'awarder_un'		=> $this->user->data['username'],
+				'awarder_color'		=> $this->user->data['user_colour'],
+				'nominated'			=> 0,
 				'nominated_reason'	=> $message,
-				'points'		=> $points,
-				'time'			=> $time,
-				'bitfield'		=> $this->bitfield,
-				'bbuid'			=> $this->uid,
+				'points'			=> $points,
+				'time'				=> $time,
+				'bitfield'			=> $this->bitfield,
+				'bbuid'				=> $this->uid,
 			);
 
 			$sql = "INSERT INTO " . $this->tb_medals_awarded . " " . $this->db->sql_build_array('INSERT', $sql_ary);
-			
+
 			$color = $this->user->data['user_colour'] ? '[color=#' . $this->user->data['user_colour'] . ']' . $this->user->data['username'] . '[/color]': $this->user->data['username'] ;
 		}
 		$result = $this->db->sql_query($sql);
@@ -1196,11 +1195,8 @@ class medals
 		}
 
 		generate_text_for_storage($message2, $this->uid, $this->bitfield, $this->m_flags, $this->allow_bbcode, $this->allow_urls, $this->allow_smilies);
-
 		$this->user->add_lang('ucp');
-
 		include_once($this->phpbb_root_path . 'includes/functions_privmsgs.' . $this->php_ext);
-			
 		$pm_data = array(
 			'address_list'		=> array('u' => array($user_id => 'to')),
 			'from_user_id'		=> $this->user->data['user_id'],
@@ -1215,9 +1211,8 @@ class medals
 			'bbcode_uid'		=> $this->uid,
 			'message'			=> $message2,
 		);
-		
-		$subject = sprintf($this->user->lang['PM_MSG_SUBJECT'], $this->user->data['username']);
 
+		$subject = sprintf($this->user->lang['PM_MSG_SUBJECT'], $this->user->data['username']);
 		submit_pm('post', $subject, $pm_data, false);
 
 		return;

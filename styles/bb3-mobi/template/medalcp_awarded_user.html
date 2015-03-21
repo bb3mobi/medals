@@ -1,0 +1,38 @@
+<!-- INCLUDE overall_header.html -->
+<p>
+<!-- IF S_CAN_NOMINATE_MEDALS --><a href="{U_NOMINATE_PANEL}">{L_NOMINATE}</a> | <!-- ENDIF -->
+<!-- IF S_CAN_AWARD_MEDALS -->
+<a href="{U_AWARD_PANEL}">{L_AWARD_MEDAL}</a> | <a href="{U_VALIDATE_PANEL}">{L_NOMINATE_MEDAL}</a><!-- ENDIF -->
+</p>
+<div class="header">{L_AWARDED_MEDAL}</div>
+<form method="post" action="{U_MEDALS_ACTION}" name="post">
+<div class="post bg1">{L_AWARDED_MEDAL_TO} {USERNAME}</div>
+	<table width="100%">
+	<!-- BEGIN medals -->
+	<!-- IF medals.IS_CAT -->
+	<tr><td colspan="3" class="post bg1">{medals.MEDAL_NAME}</td></tr>
+	<!-- ELSE -->
+	<tr>
+		<td align="center" width="40" class="post bg1">{medals.MEDAL_IMAGE}</td>
+		<td align="left" class="post bg1">{medals.MEDAL_REASON}</td>
+		<td width="15" class="post bg1"><a href="{medals.U_DELETE}" title="{L_DELETE}" class="buttom">{L_DELETE}</a></td>
+	</tr>
+	<!-- ENDIF -->
+	<!-- BEGINELSE -->
+	<tr><td colspan="3" class="post bg1"><p>{L_NO_USER_MEDALS}</p></td></tr>
+	<!-- END medals -->
+	</table>
+</form>
+<script type="text/javascript">
+	{JS}
+	var form_name = 'post';
+	var text_name = 'message';
+	function ipreview(element)
+	{
+		if (medals[element.value] == '' || medals[element.value] == null)
+			document.getElementById('imagepreview').innerHTML = '<br />{L_IMAGE_ERROR}';
+		else
+			document.getElementById('imagepreview').innerHTML = '<br /><img src="'+medals[element.value]+'" alt="{L_IMAGE_ALT}" style="max-width: 60px; max-height: 60px;" />';
+	}
+</script>
+<!-- INCLUDE overall_footer.html -->

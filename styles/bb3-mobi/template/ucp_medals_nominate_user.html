@@ -1,0 +1,37 @@
+<!-- INCLUDE ucp_header.html -->
+<h2>{L_MEDAL_CP}</h2>
+<form method="post" action="{U_MEDALS_ACTION}" name="post">
+<div class="header">{NOMINATE_MEDAL}</div>
+<table class="table1" width="100%">
+<thead>
+<tr>
+	<th class="post bg3">{L_DELETE}</th>
+	<th class="post bg3">{L_APPROVE}</th>
+	<th class="post bg3">{L_MEDAL_EDIT}</th>
+	<th class="post bg3">{L_MESSAGE}</th>
+</tr>
+</thead>
+<tbody>
+	<!-- BEGIN nominations -->
+	<tr class="post bg1">
+		<td><a href="{nominations.U_DELETE}"><span>{L_DELETE}</span></a></td>
+		<td><a href="{nominations.U_APPROVE}"><span>{L_APPROVE}</span></a></td>
+		<td><a href="{nominations.U_MEDAL_EDIT}"><span>{L_MEDAL_EDIT}</span></a></td>
+		<td>{nominations.REASON}</td>
+	</tr>
+	<!-- END nominations -->
+	<!-- IF S_ROW_COUNT eq 0 -->
+	<tr class="bg1">
+		<td colspan="4">{L_NO_USER_NOMINATIONS}</td>
+	</tr>
+	<!-- ENDIF -->
+	<!-- IF U_DELETE_ALL -->
+	<tr class="bg1">
+		<td><a href="{U_DELETE_ALL}" class="button"><span>{L_DELETE_ALL}</span></a></td>
+		<td colspan="3">{L_DELETE_ALL}</td>
+	</tr>
+	<!-- ENDIF -->
+</tbody>
+</table>
+</form>
+<!-- INCLUDE ucp_footer.html -->

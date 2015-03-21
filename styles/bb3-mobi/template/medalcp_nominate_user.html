@@ -1,0 +1,35 @@
+<!-- INCLUDE overall_header.html -->
+<p>
+<!-- IF S_CAN_NOMINATE_MEDALS --><a href="{U_NOMINATE_PANEL}">{L_NOMINATE}</a> | <!-- ENDIF -->
+<!-- IF S_CAN_AWARD_MEDALS --><a href="{U_AWARD_PANEL}">{L_AWARD_MEDAL}</a> | <a href="{U_AWARDED_PANEL}">{L_AWARDED_MEDAL}</a><!-- ENDIF -->
+</p>
+<div class="tab">{L_NOMINATE_MEDAL}</div>
+<form method="post" action="{U_MEDALS_ACTION}" name="post">
+<div class="header">{NOMINATE_MEDAL}</div>
+<table class="table1" width="100%">
+	<thead>
+	<tr>
+		<th class="post bg3">{L_DELETE}</th>
+		<th class="post bg3">{L_APPROVE}</th>
+		<th class="post bg3">{L_MEDAL_EDIT}</th>
+		<th class="post bg3">{L_MESSAGE}</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN nominations -->
+		<tr>
+			<td class="post bg2"><a href="{nominations.U_DELETE}" class="buttom">{L_DELETE}</a></td>
+			<td class="post bg1"><a href="{nominations.U_APPROVE}" class="buttom">{L_APPROVE}</a></td>
+			<td class="post bg2"><a href="{nominations.U_MEDAL_EDIT}" class="buttom">{L_MEDAL_EDIT}</a></td>
+			<td class="post bg1">{nominations.REASON}</td>
+		</tr>
+		<!-- END nominations -->
+		<!-- IF S_ROW_COUNT eq 0 -->
+		<tr>
+			<td colspan="4" class="post bg3">{L_NO_USER_NOMINATIONS}</td>
+		</tr>
+		<!-- ENDIF -->
+	</tbody>
+</table>
+</form>
+<!-- INCLUDE overall_footer.html -->

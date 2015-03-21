@@ -73,10 +73,12 @@
 	function ipreview(element)
 	{
 		if (medals[element.value] == '' || medals[element.value] == null)
-			document.getElementById('imagepreview').innerHTML = '<br />{L_IMAGE_ERROR}';		
+			document.getElementById('imagepreview').innerHTML = '<br />{L_IMAGE_ERROR}';
 		else
 			document.getElementById('imagepreview').innerHTML = '<br /><img src="'+medals[element.value]+'" title="'+medals_desc[element.value]+'" alt="'+medals_desc[element.value]+'" style="max-width: 60px; max-height: 60px;" /> '+medals_desc[element.value];
 	}
 </script>
 <form>
+<div class="copyright">{L_EXT_AUTHOR_COPY}</div>
+
 <!-- INCLUDE ucp_footer.html -->

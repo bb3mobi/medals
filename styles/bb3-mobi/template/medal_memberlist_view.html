@@ -1,0 +1,37 @@
+<!-- BEGIN switch_display_medal -->
+<!-- INCLUDEJS toggle_display.js -->
+<div class="header">{L_MEDAL_INFORMATION}</div>
+<div class="post bg3">
+	<div class="inner">
+	<!-- IF CLOASED_OPENED_INFO -->
+	<!-- BEGIN medal --><span class="rightside">{switch_display_medal.medal.MEDAL_BUTTON}</span><!-- END medal -->
+	<!-- ENDIF -->
+	<!-- BEGIN details -->&nbsp;{switch_display_medal.details.MEDAL_IMAGE_SMALL}&nbsp;<!-- END details -->
+	</div>
+</div>
+<!-- IF CLOASED_OPENED_INFO -->
+<div style="width:100%;overflow:hidden;display:none;" id="toggle_medal">
+<a name="medal"></a>
+<table width="100%" class="table1">
+<tr><th class="header">{L_MEDAL_DESCRIPTION}</th></tr>
+<!-- BEGIN details -->
+<!-- IF switch_display_medal.details.ISMEDAL_CAT -->
+<tr><td class="post bg1">[{switch_display_medal.details.MEDAL_CAT}] <span class="genmed">{L_MEDAL_DETAIL}</span></td></tr>
+<!-- ENDIF  -->
+<tr>
+	<td>
+		<div class="post bg2">
+			<div class="inner">
+			<div class="rightside">{switch_display_medal.details.MEDAL_IMAGE}</div>
+			{L_MEDAL}: {switch_display_medal.details.MEDAL_NAME} / {switch_display_medal.details.MEDAL_COUNT}</div>
+		</div>
+		{switch_display_medal.details.MEDAL_ISSUE}
+	</td>
+</tr>
+<!-- END details -->
+</table>
+<div class="copyright">{L_EXT_AUTHOR_COPY}</div>
+</div>
+<!-- ENDIF -->
+
+<!-- END switch_display_medal -->
