@@ -25,12 +25,12 @@
 						<table cellspacing="0" class="table1">
 							<thead>
 							<tr>
-								<th class="name" colspan="2">{L_NOMINATE_MEDAL}</th>
+								<th colspan="2">{L_NOMINATE_MEDAL}</th>
 							</tr>
 							</thead>
 							<tbody>
 								<!-- BEGIN nominations -->
-								<tr class="bg1">
+								<tr class="<!-- IF nominations.S_ROW_COUNT is even -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
 									<td>
 										<ul class="post-buttons">
 											<li>
@@ -49,7 +49,7 @@
 								<!-- END nominations -->
 								<!-- IF S_ROW_COUNT eq 0 -->
 								<tr class="bg1">
-									<td colspan="2"><span><br />{L_NO_USER_NOMINATIONS}<br /><br /></span></td>
+									<td colspan="2"><p>{L_NO_USER_NOMINATIONS}</p></td>
 								</tr>
 								<!-- ENDIF -->
 							</tbody>
@@ -62,4 +62,5 @@
 	</div>
 </div>
 </form>
+<div class="copyright">{L_EXT_AUTHOR_COPY}</div>
 <!-- INCLUDE overall_footer.html -->

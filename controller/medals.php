@@ -104,6 +104,7 @@ class medals
 
 		$phpbb_root_path = $this->phpbb_root_path;
 		$phpEx = $this->php_ext;
+		$medals_path = generate_board_url() . '/images/medals';
 
 		include($phpbb_root_path . 'includes/functions_posting.' . $phpEx);
 		include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
@@ -121,8 +122,8 @@ class medals
 		{
 			$medals[$row['id']] = array( 
 				'name' 			=> $row['name'], 
-				'image'	 		=> $phpbb_root_path . 'images/medals/' . $row['image'],
-				'device' 		=> $phpbb_root_path . 'images/medals/devices/' . $row['device'],
+				'image'	 		=> $medals_path . '/' . $row['image'],
+				'device' 		=> $medals_path . '/devices/' . $row['device'],
 				'dynamic'		=> $row['dynamic'],
 				'parent' 		=> $row['parent'], 
 				'id'			=> $row['id'],
@@ -498,7 +499,7 @@ class medals
 					$users_medals[$this_cat['order_id']]['name'] = $this_cat['name'];
 					$users_medals[$this_cat['order_id']][$medals[$row3['medal_id']]['order_id']][] = array(
 						'MEDAL_NAME'		=> $medals[$row3['medal_id']]['name'],
-						'MEDAL_IMAGE'		=> '<img src="' . $phpbb_root_path . $medals[$row3['medal_id']]['image'] . '" title="' . $medals[$row3['medal_id']]['name'] . '" alt="' . $medals[$row3['medal_id']]['name'] . '" />',
+						'MEDAL_IMAGE'		=> '<img src="' . $medals[$row3['medal_id']]['image'] . '" title="' . $medals[$row3['medal_id']]['name'] . '" alt="' . $medals[$row3['medal_id']]['name'] . '" />',
 						'MEDAL_REASON'		=> $message,
 						'ID'				=> $row3['id'],
 					);
@@ -1178,7 +1179,7 @@ class medals
 			$this->db->sql_query($sql);
 		}
 
-		$message2  = sprintf($this->user->lang['PM_MESSAGE'], '[img]' . generate_board_url() . '/' . $medals[$medal_id]['image'] . '[/img]', $medals[$medal_id]['name'], $color );
+		$message2  = sprintf($this->user->lang['PM_MESSAGE'], '[img]' . $medals[$medal_id]['image'] . '[/img]', $medals[$medal_id]['name'], $color );
 		$message2  .= $message;
 		if ($this->config['points_enable'] == 1)
 		{

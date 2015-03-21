@@ -110,28 +110,27 @@
 		<table class="table1" cellspacing="1" id="medal_add">
 			<thead>
 				<tr>
-					<th align="center" colspan=3>{L_NOMINATED_TITLE}</th>
+					<th align="center" colspan="3">{L_NOMINATED_TITLE}</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="bg2">
+				<tr class="bg3">
 					<td colspan="3">{NOMINATED_USERS}</td>
 				</tr>
 				<!-- BEGIN nominatedrow -->
-				<tr class="bg2">
+				<tr class="<!-- IF nominatedrow.S_ROW_COUNT is even -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
 					<td width="220">{nominatedrow.NOMINATED} {nominatedrow.COUNT}</td>
 					<td>{nominatedrow.REASON}</td>
 					<td width="80">
-						<ul class="profile-icons">
-							<li class="approve-icon"><a title="{L_APPROVE}" href="{nominatedrow.U_MCP}"><span>{L_APPROVE}</span></a></li>
-							<li>&nbsp; &nbsp;</li>
-							<li class="delete-icon"><a title="{L_DELETE}" href="{nominatedrow.U_USER_DELETE}"><span>{L_DELETE}</span></a></li>
+						<ul class="post-buttons">
+							<li><a title="{L_APPROVE}" href="{nominatedrow.U_MCP}" class="button icon-button report-icon"><span>{L_APPROVE}</span></a></li>
+							<li><a title="{L_DELETE}" href="{nominatedrow.U_USER_DELETE}" class="button icon-button delete-icon"><span>{L_DELETE}</span></a></li>
 						</ul>
 					</td>
 				</tr>
 				<!-- END nominatedrow -->
 				<!-- IF S_DELETE_ALL -->
-				<tr class="bg2">
+				<tr class="bg3">
 					<td align="right" colspan="3">
 						<form method="post" action="{U_MEDALS_ACTION}" name="post">
 						<fieldset class="submit-buttons">

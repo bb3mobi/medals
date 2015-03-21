@@ -22,7 +22,7 @@
 				<h2>{L_AWARDED_MEDAL_TO} {USERNAME}</h2>
 				<div class="panel">
 					<div class="inner">
-						<table width="100%">
+						<table class="table1">
 						<!-- BEGIN medals -->
 						<!-- IF medals.IS_CAT -->
 						<tr>
@@ -31,19 +31,19 @@
 							</td>
 						</tr>
 						<!-- ELSE -->
-						<tr>
+						<tr class="<!-- IF medals.S_ROW_COUNT is even -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
 							<td align="center" width="120">{medals.MEDAL_IMAGE}</td>
 							<td align="left"><div class="reason">{medals.MEDAL_REASON}</div></td>
 							<td width="15">
-								<ul class="profile-icons">
-									<li class="delete-icon"><a title="{L_DELETE}" class="delete-icon" href="{medals.U_DELETE}"><span>{L_DELETE}</span></a>
+								<ul class="post-buttons">
+									<li><a title="{L_DELETE}" href="{medals.U_DELETE}" class="button icon-button delete-icon"><span>{L_DELETE}</span></a></li>
 								</ul>
 							</td>
 						</tr>
 						<!-- ENDIF -->
 						<!-- BEGINELSE -->
-						<tr class="bg1">
-							<td colspan="3"><span><br />{L_NO_USER_MEDALS}<br /><br /></span></td>
+						<tr class="bg3">
+							<td colspan="3"><p>{L_NO_USER_MEDALS}</p></td>
 						</tr>
 						<!-- END medals -->
 						</table>
@@ -62,9 +62,10 @@
 	function ipreview(element)
 	{
 		if (medals[element.value] == '' || medals[element.value] == null)
-			document.getElementById('imagepreview').innerHTML = '<br />{L_IMAGE_ERROR}';		
+			document.getElementById('imagepreview').innerHTML = '<br />{L_IMAGE_ERROR}';
 		else
 			document.getElementById('imagepreview').innerHTML = '<br /><img src="'+medals[element.value]+'" alt="{L_IMAGE_ALT}" style="max-width: 60px; max-height: 60px;" />';
 	}
 </script>
+<div class="copyright">{L_EXT_AUTHOR_COPY}</div>
 <!-- INCLUDE overall_footer.html -->
