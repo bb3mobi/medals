@@ -175,10 +175,12 @@ class listener implements EventSubscriberInterface
 
 					if ($medals = $this->viewtopic->medal_row($rowset2))
 					{
-						$cp_row = array();
 						$cp_row = $event['cp_row'];
-						$cp_row['blockrow'] = array_merge($cp_row['blockrow'], array($medals));
-						$event['cp_row'] = $cp_row;
+						if (is_array($cp_row['blockrow']))
+						{
+							$cp_row['blockrow'] = array_merge($cp_row['blockrow'], array($medals));
+							$event['cp_row'] = $cp_row;
+						}
 					}
 				}
 			}
