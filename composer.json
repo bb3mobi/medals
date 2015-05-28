@@ -3,7 +3,7 @@
     "type": "phpbb-extension",
     "description": "A system for awarding medals/ribbons to users.",
     "homepage": "http://bb3.mobi",
-    "keywords": ["medal", "reating", "system", "like", "award", "ribbons"],
+    "keywords": ["medal", "rating", "system", "like", "award", "ribbons"],
     "version": "1.0.0",
     "time": "2015-02-07",
     "license": "GPL-2.0",

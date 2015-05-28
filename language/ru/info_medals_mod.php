@@ -8,6 +8,14 @@
 * перевод к версии 0.21.0 Pthelovod
 ***************************************************************************/
 
+/**
+* DO NOT CHANGE
+*/
+if (!defined('IN_PHPBB'))
+{
+	exit;
+}
+
 if (empty($lang) || !is_array($lang))
 {
 	$lang = array();
