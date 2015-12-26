@@ -57,8 +57,9 @@ class medals_viewtopic
 			{
 				if ($medal['dynamic'])
 				{
-					$device = $this->phpbb_root_path . 'images/medals/devices/' . $medal['device'] . '-' . ($medal['count'] - 1) . '.gif' ;
-					$image = $this->phpbb_root_path . 'medals.php?m=mi&med=' . $this->phpbb_root_path . 'images/medals/' . $image . '&' . 'd=' . $device ;
+					$device = generate_board_url() . '/images/medals/devices/' . $medal['device'] . '-' . ($medal['count'] - 1) . '.gif' ;
+					$image = generate_board_url() . '/medals.php?m=mi&med=' . generate_board_url() . '/images/medals/' . $image . '&' . 'd=' . $device ;
+					// $image = generate_board_url() . '/images/medals/' . $image ;
 				}
 				else
 				{
@@ -68,12 +69,12 @@ class medals_viewtopic
 					{
 						$image = $device_image ;
 					}
-					$image = $this->phpbb_root_path . 'images/medals/' . $image ;
+					$image = generate_board_url() . '/images/medals/' . $image ;
 				}
 			}
 			else
 			{
-				$image = $this->phpbb_root_path . 'images/medals/' . $image ;
+				$image = generate_board_url() . '/images/medals/' . $image ;
 			}
 
 			$img .= '<img src="' . $image . '" alt="' . $medal['name'] . '" title="' . $medal['name'] . ' (' . $medal['count']. ')"' . $medal_width . $medal_height . ' /> ';
