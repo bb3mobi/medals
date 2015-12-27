@@ -46,13 +46,13 @@ class dynamic_image
 		switch ($imageEx)
 		{
 			case 'gif':
-				return imagecreatefromgif($image);
+				return @imagecreatefromgif($image);
 			break;
 			case 'jpg':
-				return imagecreatefromjpeg($image);
+				return @imagecreatefromjpeg($image);
 			break;
 			case 'png':
-				return imagecreatefrompng($image);
+				return @imagecreatefrompng($image);
 			break;
 			default:
 			exit;
