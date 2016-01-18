@@ -178,7 +178,7 @@ class listener implements EventSubscriberInterface
 						$cp_row = $event['cp_row'];
 						if (isset($cp_row['blockrow']) && is_array($cp_row['blockrow']))
 						{
-							$cp_row['blockrow'] = array_merge((array)$cp_row['blockrow'], array($medals));
+							$cp_row['blockrow'] = array_merge((array) $cp_row['blockrow'], array($medals));
 							$event['cp_row'] = $cp_row;
 						}
 					}
