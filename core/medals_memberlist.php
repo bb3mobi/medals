@@ -166,8 +166,8 @@ class medals_memberlist
 						{
 							$rowset[$row['name']]['description'] = $row['description'];
 						}
-						$rowset[$row['name']]['image'] = $this->phpbb_root_path . 'images/medals/' . $row['image'];
-						$rowset[$row['name']]['device'] = $this->phpbb_root_path . 'images/medals/devices/' . $row['device'];
+						$rowset[$row['name']]['image'] = generate_board_url() . '/images/medals/' . $row['image'];
+						$rowset[$row['name']]['device'] = generate_board_url() . '/images/medals/devices/' . $row['device'];
 						$rowset[$row['name']]['dynamic'] = $row['dynamic'];
 					}
 					$row['nominated_reason'] = ($row['nominated_reason']) ? $row['nominated_reason'] : $lang['Medal_no_reason'];
