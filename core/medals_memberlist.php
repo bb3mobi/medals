@@ -170,7 +170,7 @@ class medals_memberlist
 						$rowset[$row['name']]['device'] = generate_board_url() . '/images/medals/devices/' . $row['device'];
 						$rowset[$row['name']]['dynamic'] = $row['dynamic'];
 					}
-					$row['nominated_reason'] = ($row['nominated_reason']) ? $row['nominated_reason'] : $lang['Medal_no_reason'];
+					$row['nominated_reason'] = ($row['nominated_reason']) ? $row['nominated_reason'] : 'Medal_no_reason';
 					$awarder_name = "";
 					if ($row['awarder_id'])
 					{
