@@ -54,6 +54,7 @@ class listener implements EventSubscriberInterface
 			'core.memberlist_view_profile'		=> 'memberlist_view_profile',
 			'core.viewtopic_modify_post_data'	=> 'viewtopic_modify_post_data',
 			'core.viewtopic_modify_post_row'	=> 'viewtopic_post_row_after',
+			'core.permissions'					=> 'add_permission',
 		);
 	}
 
@@ -185,5 +186,21 @@ class listener implements EventSubscriberInterface
 				}
 			}
 		}
+	}
+
+	/**
+	 * Add permissions
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
+	public function add_permission($event)
+	{
+		$permissions = $event['permissions'];
+		$permissions['u_award_medals'] = array('lang' => 'ACL_U_AWARD_MEDALS', 'cat' => 'misc');
+		$permissions['u_nominate_medals'] = array('lang' => 'ACL_U_NOMINATE_MEDALS', 'cat' => 'misc');
+		$permissions['a_manage_medals'] = array('lang' => 'ACL_A_MANAGE_MEDALS', 'cat' => 'misc');
+		$event['permissions'] = $permissions;
 	}
 }
