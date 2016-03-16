@@ -197,10 +197,11 @@ class listener implements EventSubscriberInterface
 	 */
 	public function add_permission($event)
 	{
-		$permissions = $event['permissions'];
-		$permissions['u_award_medals'] = array('lang' => 'ACL_U_AWARD_MEDALS', 'cat' => 'misc');
-		$permissions['u_nominate_medals'] = array('lang' => 'ACL_U_NOMINATE_MEDALS', 'cat' => 'misc');
-		$permissions['a_manage_medals'] = array('lang' => 'ACL_A_MANAGE_MEDALS', 'cat' => 'misc');
-		$event['permissions'] = $permissions;
+		$permissions = array(
+			'u_award_medals' => array('lang' => 'ACL_U_AWARD_MEDALS', 'cat' => 'misc'),
+			'u_nominate_medals' => array('lang' => 'ACL_U_NOMINATE_MEDALS', 'cat' => 'misc'),
+			'a_manage_medals' => array('lang' => 'ACL_A_MANAGE_MEDALS', 'cat' => 'misc'),
+		);
+		$event['permissions'] = array_merge($permissions, $event['permissions']);
 	}
 }
