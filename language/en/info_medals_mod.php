@@ -119,5 +119,5 @@ $lang = array_merge($lang, array(
 	'NO_SWAP_ID'			=> 'No Swap ID was specified',
 	'NOT_SELF'				=> 'You cannot nominate yourself',
 
-	'EXT_AUTHOR_COPY'		=> 'BB3.Mobi &copy; <a href="http://bb3.mobi/forum/viewtopic.php?t=78">Medals System Extension</a>',
+	'EXT_AUTHOR_COPY'		=> 'Anvar 2015 BB3.Mobi &copy; <a href="http://bb3.mobi/forum/viewtopic.php?t=78" title="Development Extension - Anvar Stybaev" >Medals System Extension</a>',
 ));

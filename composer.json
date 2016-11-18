@@ -4,7 +4,7 @@
     "description": "A system for awarding medals/ribbons to users.",
     "homepage": "http://bb3.mobi",
     "keywords": ["medal", "rating", "system", "like", "award", "ribbons"],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "time": "2015-02-07",
     "license": "GPL-2.0",
     "authors": [

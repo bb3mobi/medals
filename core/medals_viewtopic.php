@@ -1,19 +1,12 @@
 <?php
-/***************************************************************************
-*
-* @package Medals Mod for phpBB3
-* @version $Id: medals.php,v 0.7.0 2008/01/23 Gremlinn$
-* @copyright (c) 2008 Nathan DuPra (mods@dupra.net)
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
-***************************************************************************/
 /**
-* @package Medals System Extension for phpBB3
-* @author Anvar [http://bb3.mobi]
-* @version v1.0.0, 2015/02/11
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+* @author Gremlinn (Nathan DuPra) mods@dupra.net | Anvar Stybaev (DEV Extension phpBB3.1.x)
+* @package Medals System Extension
+* @copyright Anvar 2015 (c) Extensions bb3.mobi
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
 */
-
 namespace bb3mobi\medals\core;
 
 class medals_viewtopic
@@ -21,16 +14,13 @@ class medals_viewtopic
 	/** @var \phpbb\config\config */
 	protected $config;
 
-	/** @var \phpbb\template\template */
-	protected $template;
+	/** @var \phpbb\controller\helper */
+	protected $helper;
 
-	protected $phpbb_root_path;
-
-	public function __construct(\phpbb\config\config $config, \phpbb\template\template $template, $phpbb_root_path)
+	public function __construct(\phpbb\config\config $config, $helper)
 	{
 		$this->config = $config;
-		$this->template = $template;
-		$this->phpbb_root_path = $phpbb_root_path;
+		$this->helper = $helper;
 	}
 
 	public function medal_row($rowset2)
@@ -58,8 +48,7 @@ class medals_viewtopic
 				if ($medal['dynamic'])
 				{
 					$device = generate_board_url() . '/images/medals/devices/' . $medal['device'] . '-' . ($medal['count'] - 1) . '.gif' ;
-					$image = generate_board_url() . '/medals.php?m=mi&med=' . generate_board_url() . '/images/medals/' . $image . '&' . 'd=' . $device ;
-					// $image = generate_board_url() . '/images/medals/' . $image ;
+					$image = $this->helper->route('bb3mobi_medals_controller', array('m' => 'mi', 'med' => generate_board_url() . '/images/medals/' . $image, 'd' => $device));
 				}
 				else
 				{
@@ -94,11 +83,6 @@ class medals_viewtopic
 				$col++;
 			}
 		}
-		return array(
-			'PROFILE_FIELD_IDENT' => 'medals',
-			'PROFILE_FIELD_NAME' => '',
-			'PROFILE_FIELD_VALUE' => $img,
-			'S_PROFILE_CONTACT' => false,
-		);
+		return $img;
 	}
 }

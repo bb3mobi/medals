@@ -1,17 +1,11 @@
 <?php
-/***************************************************************************
-*
-* @package Medals Mod for phpBB3
-* @version $Id: medals.php,v 0.7.0 2008/01/23 Gremlinn$
-* @copyright (c) 2008 Nathan DuPra (mods@dupra.net)
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
-***************************************************************************/
 /**
-* @package Medals System Extension for phpBB3
-* @author Anvar [http://bb3.mobi]
-* @version v1.0.0, 2015/02/11
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+* @author Gremlinn (Nathan DuPra) mods@dupra.net | Anvar Stybaev (DEV Extension phpBB3.1.x)
+* @package Medals System Extension
+* @copyright Anvar 2015 (c) Extensions bb3.mobi
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
 */
 
 namespace bb3mobi\medals\core;
@@ -33,12 +27,10 @@ class medals_memberlist
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
-	protected $phpbb_root_path;
-
 	/** @var \phpbb\controller\helper */
 	protected $helper;
 
-	public function __construct(\phpbb\user $user, \phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\db\driver\driver_interface $db, $tb_medals, $tb_medals_awarded, $tb_medals_cats, $phpbb_root_path, $helper)
+	public function __construct(\phpbb\user $user, \phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\db\driver\driver_interface $db, $tb_medals, $tb_medals_awarded, $tb_medals_cats, $helper)
 	{
 		$this->user = $user;
 		$this->auth = $auth;
@@ -49,7 +41,6 @@ class medals_memberlist
 		$this->tb_medals_awarded = $tb_medals_awarded;
 		$this->tb_medals_cats = $tb_medals_cats;
 
-		$this->phpbb_root_path = $phpbb_root_path;
 		$this->helper = $helper;
 
 		$this->user->add_lang_ext('bb3mobi/medals', 'info_medals_mod');
@@ -77,7 +68,7 @@ class medals_memberlist
 		$sql = "SELECT id, name
 			FROM " . $this->tb_medals_cats . "
 			ORDER BY order_id";
-		if( !($result = $this->db->sql_query($sql)) )
+		if (!($result = $this->db->sql_query($sql)))
 		{
 			message_die(GENERAL_ERROR, 'Could not query medal categories list', '', __LINE__, __FILE__, $sql);
 		}
@@ -145,7 +136,6 @@ class medals_memberlist
 						AND m.id = ma.medal_id
 						AND ma.nominated = 0
 					ORDER BY c.order_id, m.order_id, ma.time";
-
 			if ($result = $this->db->sql_query($sql))
 			{
 				$row = array();

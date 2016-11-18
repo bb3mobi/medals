@@ -119,5 +119,5 @@ $lang = array_merge($lang, array(
 	'NO_SWAP_ID'			=> 'Nessun ID specificato',
 	'NOT_SELF'				=> 'Non si puoi candidare te stesso',
 
-	'EXT_AUTHOR_COPY'		=> 'BB3.Mobi &copy; <a href="http://bb3.mobi/forum/viewtopic.php?t=78">Medals System Extension</a>. Traduzione Italiana di <a href="http://www.microcosmoacquari.it/forum/">Microcosmo</a>.',
+	'EXT_AUTHOR_COPY'		=> 'Anvar 2015 BB3.Mobi &copy; <a href="http://bb3.mobi/forum/viewtopic.php?t=78">Medals System Extension</a>. Traduzione Italiana di <a href="http://www.microcosmoacquari.it/forum/">Microcosmo</a>.',
 ));

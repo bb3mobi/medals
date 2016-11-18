@@ -1,9 +1,11 @@
 <?php
 /**
-* @package Medals System Extension for phpBB3
-* @author Anvar [http://bb3.mobi]
-* @version v1.0.0, 2015/02/11
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+* @author Gremlinn (Nathan DuPra) mods@dupra.net | Anvar Stybaev (DEV Extension phpBB3.1.x)
+* @package Medals System Extension
+* @copyright Anvar 2015 (c) Extensions bb3.mobi
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
 */
 
 namespace bb3mobi\medals\event;
@@ -146,6 +148,7 @@ class listener implements EventSubscriberInterface
 
 			if ($this->config['medal_display_topic'] && $medals_count)
 			{
+				$medals = '';
 				$sql = "SELECT m.id, m.name, m.image, m.device, m.dynamic, m.parent, ma.time, c.id as cat_id, c.name as cat_name
 					FROM " . $this->tb_medal . " m, " . $this->tb_medals_awarded . " ma, " . $this->tb_medals_cats . " c
 						WHERE ma.user_id = '" . $poster_id . "'
@@ -174,15 +177,9 @@ class listener implements EventSubscriberInterface
 						$rowset2[$row['image']]['device'] = $row['device'];
 					}
 
-					if ($medals = $this->viewtopic->medal_row($rowset2))
-					{
-						$cp_row = $event['cp_row'];
-						if (isset($cp_row['blockrow']) && is_array($cp_row['blockrow']))
-						{
-							$cp_row['blockrow'] = array_merge((array) $cp_row['blockrow'], array($medals));
-							$event['cp_row'] = $cp_row;
-						}
-					}
+					$post_row = $event['post_row'];
+					$post_row['MEDALS'] = $this->viewtopic->medal_row($rowset2);
+					$event['post_row'] = $post_row;
 				}
 			}
 		}

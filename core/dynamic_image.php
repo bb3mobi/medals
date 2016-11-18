@@ -1,17 +1,11 @@
 <?php
-/***************************************************************************
-*
-* @package Medals Mod for phpBB3
-* @version $Id: dynamic_image.php,v 1.0.0 2009/10/29 Gremlinn$
-* @copyright (c) 2009 Nathan DuPra (mods@dupra.net)
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
-***************************************************************************/
 /**
-* @package Medals System Extension for phpBB3
-* @author Anvar [http://bb3.mobi]
-* @version v1.0.0, 2015/02/11
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+* @author Gremlinn (Nathan DuPra) mods@dupra.net | Anvar Stybaev (DEV Extension phpBB3.1.x)
+* @package Medals System Extension
+* @copyright Anvar 2015 (c) Extensions bb3.mobi
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
 */
 
 namespace bb3mobi\medals\core;

@@ -44,13 +44,11 @@ services:
             - %bb3mobi.tables.medals%
             - %bb3mobi.tables.medals_awarded%
             - %bb3mobi.tables.medals_cats%
-            - %core.root_path%
             - @controller.helper
     bb3mobi.medals.viewtopic:
         class: bb3mobi\medals\core\medals_viewtopic
         arguments:
             - @config
-            - @template
-            - %core.root_path%
+            - @controller.helper
     bb3mobi.medals.dynamic:
         class: bb3mobi\medals\core\dynamic_image

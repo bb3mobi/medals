@@ -1,16 +1,11 @@
 <?php
 /**
 *
-* @author Gremlinn (Nathan DuPra) mods@dupra.net
-* @package umil
-* @version $Id install.php 1.0.0 2009-11-24 18:15:00Z Gremlinn $
-* @copyright (c) 2009 Gremlinn
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+* @author Gremlinn (Nathan DuPra) mods@dupra.net | Anvar Stybaev (DEV Extension phpBB3.1.x)
+* @package Medals System Extension
+* @copyright Anvar 2015 (c) Extensions bb3.mobi
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
-*/
-/**
-* @package phpBB3.1 Medals System Extension
-* @copyright Anvar (c) 2015 bb3.mobi
 */
 
 namespace bb3mobi\medals\migrations;

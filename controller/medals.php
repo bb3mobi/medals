@@ -1,17 +1,11 @@
 <?php
-/***************************************************************************
-*
-* @package Medals Mod for phpBB3
-* @version $Id: medals.php,v 0.8.5 2008/02/06 Gremlinn$
-* @copyright (c) 2008 Nathan DuPra (mods@dupra.net)
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
-***************************************************************************/
 /**
-* @package Medals System Extension for phpBB3
-* @author Anvar [http://bb3.mobi]
-* @version v1.0.0, 2015/02/11
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+* @author Gremlinn (Nathan DuPra) mods@dupra.net | Anvar Stybaev (DEV Extension phpBB3.1.x)
+* @package Medals System Extension
+* @copyright Anvar 2015 (c) Extensions bb3.mobi
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
 */
 
 namespace bb3mobi\medals\controller;
@@ -72,6 +66,8 @@ class medals
 		$this->allow_smilies = true;
 		$this->allow_urls = false;
 		$this->m_flags = '3'; // 1 is bbcode, 2 is smiles, 4 is urls (add together to turn on more than one)
+
+		$this->points_enable = (isset($this->config['points_enable'])) ? $this->config['points_enable'] : 0;
 	}
 
 	public function medals_system()
@@ -79,7 +75,7 @@ class medals
 		if (!$this->config['medals_active'])
 		{
 			$url = append_sid($this->phpbb_root_path . 'index.' . $this->php_ext);
-			$message = "This mod is not active. <br /><br />Click <a href=\"$url\">here</a> to return to the index.<br />";
+			$message = "This extension is not active. <br /><br />Click <a href=\"$url\">here</a> to return to the index.<br />";
 			trigger_error($message);
 		}
 
@@ -109,8 +105,6 @@ class medals
 		include($phpbb_root_path . 'includes/functions_posting.' . $phpEx);
 		include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 		include($phpbb_root_path . 'includes/message_parser.' . $phpEx);
-
-		$this->config['points_enable'] = isset($this->config['points_enable']) ? $this->config['points_enable'] : 0;
 
 		$medals = array();
 
@@ -651,7 +645,7 @@ class medals
 				}
 				if (confirm_box(true))
 				{
-					if ($this->config['points_enable'] == 1)
+					if ($this->points_enable == 1)
 					{
 						$sql = "SELECT points
 							FROM " . $this->tb_medals_awarded . "
@@ -1171,7 +1165,7 @@ class medals
 		$message = generate_text_for_edit($message,$this->uid,$this->m_flags);
 		$message = isset($message['text']) ? $message['text'] : '';
 
-		if ($result && $this->config['points_enable'] == 1)
+		if ($result && $this->points_enable == 1)
 		{
 			$sql = "UPDATE " . USERS_TABLE . " 
 				SET medal_user_points = user_points + $points
@@ -1181,7 +1175,7 @@ class medals
 
 		$message2  = sprintf($this->user->lang['PM_MESSAGE'], '[img]' . $medals[$medal_id]['image'] . '[/img]', $medals[$medal_id]['name'], $color );
 		$message2  .= $message;
-		if ($this->config['points_enable'] == 1)
+		if ($this->points_enable == 1)
 		{
 			if ($points < 0)
 			{
