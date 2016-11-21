@@ -656,7 +656,7 @@ class medals
 						$this->db->sql_freeresult($result);
 
 						$sql = "UPDATE " . USERS_TABLE . " 
-							SET medal_user_points = user_points - " . $row['points'] . "
+							SET user_points = user_points - " . $row['points'] . "
 							WHERE user_id = $user_id" ;
 						$this->db->sql_query($sql);
 					}
@@ -1168,7 +1168,7 @@ class medals
 		if ($result && $this->points_enable == 1)
 		{
 			$sql = "UPDATE " . USERS_TABLE . " 
-				SET medal_user_points = user_points + $points
+				SET user_points = user_points + $points
 				WHERE user_id = $user_id" ;
 			$this->db->sql_query($sql);
 		}

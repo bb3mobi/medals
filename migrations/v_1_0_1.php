@@ -22,6 +22,23 @@ class v_1_0_1 extends \phpbb\db\migration\migration
 		return array('\bb3mobi\medals\migrations\v_1_0_0');
 	}
 
+	/**
+	* Drop columns medal_user_points in the database:
+	*
+	* @return array Array of table schema
+	* @access public
+	*/
+	public function update_schema()
+	{
+		return array(
+			'drop_columns'	=> array(
+				$this->table_prefix . 'users'	=> array(
+					'medal_user_points',
+				),
+			),
+		);
+	}
+
 	public function update_data()
 	{
 		return array(
