@@ -32,7 +32,7 @@ class medals_module
 		$submode = $request->variable('submode', '');
 		$submit = ($request->is_set_post('submit')) ? true : false;
 
-		switch($mode)
+		switch ($mode)
 		{
 			case 'config':
 				$display_vars = array(
@@ -210,7 +210,7 @@ class medals_module
 				break;
 		}
 
-		switch($submode)
+		switch ($submode)
 		{
 			case 'move':
 				if ($move_type)
@@ -261,7 +261,7 @@ class medals_module
 
 				$this->tpl_name = 'acp_medals_cat';
 				$this->page_title = $user->lang['ACP_MEDALS_INDEX'];
-				foreach($medals as $key => $value)
+				foreach ($medals as $key => $value)
 				{
 					if ($value['parent'] != $cat_id)
 					{
@@ -340,7 +340,7 @@ class medals_module
 				}
 
 				$options2 = '';
-				foreach($cats as $key => $value)
+				foreach ($cats as $key => $value)
 				{
 					if ($medals[$medal_id]['parent'] == $value['id'])
 					{
@@ -490,7 +490,7 @@ class medals_module
 				}
 
 				$options2 = '';
-				foreach($cats as $key => $value)
+				foreach ($cats as $key => $value)
 				{
 					if ($key == $cat_id)
 					{
@@ -584,7 +584,7 @@ class medals_module
 				if (!$request->is_set_post('deleteall') && !$request->is_set_post('moveall'))
 				{
 					$options2 = '';
-					foreach($cats as $key => $value)
+					foreach ($cats as $key => $value)
 					{
 						if ($value['id'] != $cat_id)
 						{
@@ -654,9 +654,10 @@ class medals_module
 				}
 			break;
 		}
+
 		if (empty($submode))
 		{
-			switch($mode)
+			switch ($mode)
 			{
 				case 'config':
 					$this->tpl_name = 'acp_medals_config';
@@ -666,7 +667,7 @@ class medals_module
 				case 'management':
 					$this->tpl_name = 'acp_medals';
 					$this->page_title = $user->lang['ACP_MEDALS_INDEX'];
-					foreach($cats as $key2 => $value2)
+					foreach ($cats as $key2 => $value2)
 					{
 						$template->assign_block_vars('medals', array(
 							'U_EDIT'			=> append_sid('index.php?i=' . $id . '&mode=management&submode=editcat&catid=' . $value2['id']),
