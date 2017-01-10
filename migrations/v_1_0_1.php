@@ -43,10 +43,7 @@ class v_1_0_1 extends \phpbb\db\migration\migration
 	{
 		return array(
 			// Update version
-			array('if', array(
-				(isset($this->config['medals_version']) && version_compare($this->config['medals_version'], '1.0.1', '<')),
-				array('config.update', array('medals_version', '1.0.1')),
-			)),
+			array('config.update', array('medals_version', '1.0.1')),
 		);
 	}
 }
