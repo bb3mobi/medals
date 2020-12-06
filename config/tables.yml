@@ -1,4 +1,4 @@
 parameters:
-    bb3mobi.tables.medals: %core.table_prefix%medals
-    bb3mobi.tables.medals_awarded: %core.table_prefix%medals_awarded
-    bb3mobi.tables.medals_cats: %core.table_prefix%medals_cats
+    bb3mobi.tables.medals: '%core.table_prefix%medals'
+    bb3mobi.tables.medals_awarded: '%core.table_prefix%medals_awarded'
+    bb3mobi.tables.medals_cats: '%core.table_prefix%medals_cats'
