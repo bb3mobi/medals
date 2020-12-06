@@ -4,51 +4,51 @@ services:
     bb3mobi.medals.controller:
         class: bb3mobi\medals\controller\medals
         arguments:
-            - @user
-            - @auth
-            - @config
-            - @request
-            - @template
-            - @controller.helper
-            - @dbal.conn
-            - %bb3mobi.tables.medals%
-            - %bb3mobi.tables.medals_awarded%
-            - %bb3mobi.tables.medals_cats%
-            - @bb3mobi.medals.dynamic
-            - %core.root_path%
-            - %core.php_ext%
+            - '@user'
+            - '@auth'
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@controller.helper'
+            - '@dbal.conn'
+            - '%bb3mobi.tables.medals%'
+            - '%bb3mobi.tables.medals_awarded%'
+            - '%bb3mobi.tables.medals_cats%'
+            - '@bb3mobi.medals.dynamic'
+            - '%core.root_path%'
+            - '%core.php_ext%'
     bb3mobi.medals.listener:
         class: bb3mobi\medals\event\listener
         arguments:
-            - @user
-            - @auth
-            - @config
-            - @template
-            - @controller.helper
-            - @dbal.conn
-            - %bb3mobi.tables.medals%
-            - %bb3mobi.tables.medals_awarded%
-            - %bb3mobi.tables.medals_cats%
-            - @bb3mobi.medals.memberlist
-            - @bb3mobi.medals.viewtopic
+            - '@user'
+            - '@auth'
+            - '@config'
+            - '@template'
+            - '@controller.helper'
+            - '@dbal.conn'
+            - '%bb3mobi.tables.medals%'
+            - '%bb3mobi.tables.medals_awarded%'
+            - '%bb3mobi.tables.medals_cats%'
+            - '@bb3mobi.medals.memberlist'
+            - '@bb3mobi.medals.viewtopic'
         tags:
             - { name: event.listener }
     bb3mobi.medals.memberlist:
         class: bb3mobi\medals\core\medals_memberlist
         arguments:
-            - @user
-            - @auth
-            - @config
-            - @template
-            - @dbal.conn
-            - %bb3mobi.tables.medals%
-            - %bb3mobi.tables.medals_awarded%
-            - %bb3mobi.tables.medals_cats%
-            - @controller.helper
+            - '@user'
+            - '@auth'
+            - '@config'
+            - '@template'
+            - '@dbal.conn'
+            - '%bb3mobi.tables.medals%'
+            - '%bb3mobi.tables.medals_awarded%'
+            - '%bb3mobi.tables.medals_cats%'
+            - '@controller.helper'
     bb3mobi.medals.viewtopic:
         class: bb3mobi\medals\core\medals_viewtopic
         arguments:
-            - @config
-            - @controller.helper
+            - '@config'
+            - '@controller.helper'
     bb3mobi.medals.dynamic:
         class: bb3mobi\medals\core\dynamic_image
